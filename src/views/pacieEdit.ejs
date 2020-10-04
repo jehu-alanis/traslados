@@ -1,0 +1,73 @@
+<link rel="stylesheet"  href="../css/bootstrap.min.css">
+<% include partials/_header %>
+
+<div class="container mt-7">
+    <div class="col-md-16">
+
+            <form action="/actualizarPaciente/<%= data.rfc %>"  name=formulario method="POST">
+      <p style="text-align: center;"><h5>DERECHOHABIENTE</h5></p>
+            <div class="row">
+              
+                    <table class="table table-bordered table-hover">
+                    
+                            <tbody>
+                  
+                            <tr class="table-primary">
+                                <th scope="col " >DERECHOHABIENTE</th>
+                                
+                          </tr>
+                                
+                                      <tr> 
+                                        <td>RFC: <div class="form-group"><input type="text" name="rfc" value="<%= data.rfc%>" class="form-control" required></div></td>
+                                        <td>NOMBRE: <div class="form-group"><input type="text" name="nombre"  value="<%= data.nombre%>"class="form-control"required></div></td>
+                                        <td>TELEFONO:<div class="form-group"><input type="text" name="telefono" value="<%= data.telefono%>" class="form-control"required></div></td>
+                                        <td>EMAIL: <div class="form-group"><input type="text" name="email" value="<%= data.email%>" class="form-control" ></div></td>
+                                              
+                                      </tr>
+                                           
+                        
+                                </tr>
+                                
+                                      <tr> 
+                                              <td>RFC CUENTAHABIENTE: <div class="form-group"><input type="text"  name="rfcCuenta" value="<%= data.rfcCuenta%>" class="form-control" required></div></td>
+                                              <td>CUENTAHABIENTE: <div class="form-group"><input type="text" name="cuentahabiente" value="<%= data.cuentahabiente%>"  class="form-control"required></div></td>
+                                              <td>CLABE: <div class="form-group"><input type="text" name="clabe"  value="<%= data.clabe%>" class="form-control"required></div></td>
+                                              <td>BANCO:  
+                                              <div class="form-group">
+                                                    <select class="custom-select" id="Bancos" name="Bancos_idBanco" >
+                                                      
+                                                      <option value="1">BANCOMER</option>
+                                                      <option value="2">BANAMEX</option>
+                                                      <option value="3">BANORTE</option>
+                                                      <option value="4">SANTANDER</option>
+                                                      <option value="5">HSBC</option>
+                                                      <option value="6">WALMART</option>
+                                                      <option value="7">SCOTIANBANK</option>
+                                                      <option value="8">BANCO AZTECA</option> 
+                                                       <option value="9">BANREGIO</option>
+                                                      <option value="10">COMPARTAMOS</option>
+                                                      <option value="11">FAMSA</option>
+                                                      <option value="12">OTRO</option>
+                                                      
+                                                    </select>
+                                                  </div> 
+                                      </tr>
+                        
+                
+                                    </tbody>
+                                    
+        
+                                    <td><button type="submit" class="btn btn-primary">GUARDAR</button></td>  
+                                    <td><a href="/" class="btn btn-danger">CANCELAR</a></td>
+                                    <td><a href="/reportar/<%= data.rfc%>" class="btn btn-info">Reportar Traslado</a></td> 
+                                </table>
+        </div>
+        </form>
+        </div>
+        </div>
+
+    <script>
+      document.ready = document.getElementById("Bancos").value =  "<%= data.Bancos_idBanco%>" ;
+  </script>
+
+    <% include partials/_footer %>

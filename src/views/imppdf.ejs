@@ -1,0 +1,112 @@
+<link rel="stylesheet"  href="../css/bootstrap.min.css">
+<% include partials/_header %>
+
+<div class="container mt-2">
+    <div class="col-md-16">
+        <form action="/pdf "  name=formulario method="POST">
+
+        <table class="table table-bordered table-hover">
+                <td>FECHA DE IMPRESION: <div class="form-group"><input type="text" id="fechaActual" name="fecha" value=" " class="form-control" ></div></td>
+            <tbody>
+  
+            <tr class="table-primary">
+                <th scope="col " >DERECHOHABIENTE</th>
+                
+          </tr>
+                
+                      <tr> 
+                              <td>RFC: <div class="form-group"><input type="text" name="rfc" value="<%= data.rfc%>" class="form-control" ></div></td>
+                              <td>NOMBRE: <div class="form-group"><input type="text" name="nombre"  value="<%= data.nombre%>"class="form-control"></div></td>
+                              <td>TELEFONO:<div class="form-group"><input type="text" name="telefono" value="<%= data.telefono%>" class="form-control"></div></td>
+                              <td>EMAIL: <div class="form-group"><input type="text" name="email" value="<%= data.email%>" class="form-control" ></div></td>
+                              
+                      </tr>
+                           
+        
+                </tr>
+                
+                      <tr> 
+                              <td>RFC CUENTAHABIENTE: <div class="form-group"><input type="text"  name="rfcCuenta" value="<%= data.rfcCuenta%>" class="form-control" ></div></td>
+                              <td>CUENTAHABIENTE: <div class="form-group"><input type="text" name="cuentahabiente" value="<%= data.cuentahabiente%>"  class="form-control"></div></td>
+                              <td>CLABE: <div class="form-group"><input type="text" name="clabe"  value="<%= data.clabe%>" class="form-control"></div></td>
+                              <td>BANCO:  <div class="form-group"><input type="text" name="Bancos_idBanco" value="<%= data.nombre_banco%>"class="form-control"></div></td>
+
+                                
+                      </tr>
+        
+
+                    </tbody>
+                    </table>
+
+
+
+<table class="table table-bordered table-hover">        
+        <tbody>
+                  <tr class="table-primary">
+                          <th scope="col " >TRASLADO</th>
+                          
+                    </tr>
+                    
+      <tr> <td>DE: <div class="form-group"> <input type="text" name="Salidas_idSalidas" value="<%= data.Sciudad%>" class="form-control" value="<%= data.Salidas_idSalidas%>" >
+             </div> </td>
+                                   
+                                  <td>FECHA: <div class="form-group"><input type="text" name="fechaTraslado" value="<%= data.fechaTraslado%>" class="form-control"></div></td>
+                                  <td>SERVICIO: <div class="form-group"><input type="text" name="servicio" value="<%= data.servicio%>" class="form-control"></div></td>
+                                  <td>HACIA:  <div class="form-group"><input type="text" name="Destinos_idDestinos"value="<%= data.Dciudad%>" class="form-control"> </td> </div>
+                                    
+                                    
+                                   
+                                  
+                                  
+                          </tr>
+                          <tr> 
+                                <td>AJUSTE ISSSTE: <div class="form-group"><input id="numero"  type="number" name="ajusteIssste"  value="<%= data.ajusteIssste.toFixed(2)%>" class="form-control" >   </div></td>
+                                <td>VALOR LETRA: <div class="form-group"><input  type="text" name="valorLetra" id="texto2" value="<%= data.valorLetra%>" class="form-control"></div>
+                                </td> 
+                            <td>Total facturado: <div class="form-group"><input type="number" name="valor" value="<%= data.valor.toFixed(2)%>" class="form-control"></div></td>
+                                
+                          </tr>
+
+                         <tr>
+                                <td>IMPUESTO: <div class="form-group"><input type="number" name="impuesto" value="<%= data.impuesto.toFixed(2)%>"   class="form-control"></div></td>
+                                <td>DIFERENCIA: <div class="form-group"><input type="number" name="diferencia" value="<%= data.diferencia.toFixed(2)%>"  class="form-control"></div></td>
+                                <td>SUBTOTAL: <div class="form-group"><input type="number" id='prueba' name="subtotal" value="<%= data.subtotal.toFixed(2)%>"  class="form-control" ></div></td>
+                                   
+               
+                         </tr>
+
+                          <tr> 
+                                <td>Folios: <div class="form-group"><input type="text"  name="Folios_idFolios"value="<%= data.Folios_idFolios%>" class="form-control" ></div></td>
+                                <td>OFICIO: <div class="form-group"><input type="text"  name="oficio"value="<%= data.oficio%>" class="form-control" ></div></td>
+                                <td>Tipo Comprobante <div class="form-group">  <input type="text"  name="tipoComprobante"  value="<%= data.tipoComprobante%>" class="form-control" >
+                                </div></td>
+
+                            </tr>
+                          
+                        
+                        
+                        
+            </tbody>
+          </table>  
+         
+         
+         <button type="submit" class="btn btn-primary">Imprimir PDF</button>
+         <a href="/EditReportar/<%= data.Folios_idFolios%>" class="btn btn-info">EDITAR REPORTE</a>
+
+</form>   
+</div> 
+</div> 
+
+
+
+
+<% include partials/_footer %>
+
+
+<script>
+  var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+  var diasSemana = new Array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado");
+  var f=new Date();
+  //document.write(diasSemana[f.getDay()] + ", " + f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear());
+  document.getElementById('fechaActual').value=(diasSemana[f.getDay()] + ", " + f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear()); 
+  </script>

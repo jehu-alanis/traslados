@@ -1,0 +1,119 @@
+<link rel="stylesheet"  href="../css/bootstrap.min.css">
+<% include partials/_header %>
+
+
+
+<script type="text/javascript">
+  (function(document) {
+    'use strict';
+
+    var LightTableFilter = (function(Arr) {
+
+      var _input;
+
+      function _onInputEvent(e) {
+        _input = e.target;
+        var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+        Arr.forEach.call(tables, function(table) {
+          Arr.forEach.call(table.tBodies, function(tbody) {
+            Arr.forEach.call(tbody.rows, _filter);
+          });
+        });
+      }
+
+      function _filter(row) {
+        var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
+        row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+      }
+
+      return {
+        init: function() {
+          var inputs = document.getElementsByClassName('light-table-filter');
+          Arr.forEach.call(inputs, function(input) {
+            input.oninput = _onInputEvent;
+          });
+        }
+      };
+    })(Array.prototype);
+
+    document.addEventListener('readystatechange', function() {
+      if (document.readyState === 'complete') {
+        LightTableFilter.init();
+      }
+    });
+
+  })(document);
+  </script>
+
+<div class="container mt-4">
+    <h1>Buscador De Traslado </h1>
+<input   class="form-control col-md-3 light-table-filter" data-table="table table-bordered table-hover" type="text" placeholder="Buscar..">
+</div>
+<!----------------------------------------------------------------------------------------------------------------->
+           
+<!------------------------------------------------------BUSCARDOR----------------------------------------------------->
+
+
+
+<!----------------------------------------------------------------------------------------------------------------->
+
+
+
+<div class="container mt-4">
+    <div class="row">
+      <div class="col-md-16">
+    
+        <table class="table table-bordered table-hover">
+          <thead>
+
+              <tr class="table-primary">
+                  <th scope="col ">Nombre</th>
+                  <th scope="col ">RFC</th>
+                  <th scope="col ">FOLIO</th>
+                  <th scope="col ">SERVICIO</th>
+                  
+                  <th></th> 
+                  
+                </tr>
+            
+          </thead>
+          <tbody>
+            <% if (data) { %>
+              <% for(var i = 0; i < data.length; i++) { %>
+                <tr>
+                  <!--<td><%= (i + 1) %></td>--->
+                  <td><%= data[i].nombre %></td>
+                  <td><%= data[i].Pacientes_rfc %></td>
+                  <td><%= data[i].Folios_idFolios %></td>
+                  <td><%= data[i].servicio %></td>
+                  
+                  <td>
+                    <a href="/HistTraslado/<%= data[i].Folios_idFolios%>" class="btn btn-info">Ver Traslado</a>
+                  <!-- <a href="/delete/<%= data[i].id %>" class="btn btn-danger">Historial</a> --->
+                  </td>
+                </tr>
+              <% } %>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+
+
+
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<% include partials/_footer %>
+
+
+
+

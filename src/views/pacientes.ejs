@@ -1,0 +1,90 @@
+<link rel="stylesheet"  href="../css/bootstrap.min.css">
+<% include partials/_header %>
+
+ <!----------------------------------------------------------------------------------------------------------------->
+           
+<!------------------------------------------------------BUSCARDOR----------------------------------------------------->
+
+
+
+<!----------------------------------------------------------------------------------------------------------------->
+
+    
+
+ 
+  
+<div class="container mt-4">
+    <div class="row">
+      <div class="col-md-16">
+    
+        <table class="table table-bordered table-hover" id="ta">
+          <thead>
+             
+
+              <tr class="table-primary">
+                  <th >Nombre Trabajador</th>
+                  <th scope="col ">RFC</th>
+                  <th scope="col ">CLABE</th> 
+                  <th scope="col ">CUENTAHABIENTE</th>
+                  
+                  <th>  </th> 
+                  <th>  </th> 
+                   
+                  
+                </tr>
+            
+          </thead>
+          
+          <tbody>
+            <% if (data) { %>
+              <% for(var i = 0; i < data.length; i++) { %>
+                <tr>
+                  <!--<td><%= (i + 1) %></td>--->
+                  <td><%= data[i].nombre %></td>
+                  <td><%= data[i].rfc %></td>
+                  <td><%= data[i].clabe %></td>
+                  <td><%= data[i].cuentahabiente %></td>
+                  <td>
+                    <a href="/reportar/<%= data[i].rfc%>" class="btn btn-primary">Reportar Traslado</a>
+                  <a href="/traslado/<%= data[i].rfc %>" class="btn btn-info">Historial</a> 
+                  
+                </td>
+              <td><a href="/delete/<%= data[i].rfc %>" class="btn btn-primary">Eliminar</a> 
+               <a href="/EditPacienteForm/<%= data[i].rfc %>" class="btn btn-info">Actualizar</a></td>  
+              </tr>
+              <% } %>
+            <% } %>
+          </tbody>
+        </table>
+ 
+      </div>
+
+
+
+
+
+  </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js">
+
+
+</script>
+
+
+
+<script type="text/javascript">
+$(document).ready( function () {
+    $('#ta').DataTable();
+} );
+
+</script>
+
+
+
+
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+
+
+<% include partials/_footer %>
