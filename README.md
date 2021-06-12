@@ -1,5 +1,5 @@
 # CRUD Nodejs and Mysql
-this is a application crud that uses nodejs in the backend, mysql as database and boostrap.
+in this  application nodejs in the backend, mysql as database. and more dependencies, proyecto de residencias profecionales ITSX
 
 
 
